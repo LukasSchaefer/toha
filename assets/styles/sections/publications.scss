@@ -19,6 +19,7 @@
       .sub-title {
         color: get-light-color('muted-text-color');
         margin-top: 0.4rem;
+        font-size: 10pt;
 
         span:nth-child(2) {
           float: right !important;
@@ -83,6 +84,7 @@
       flex: 100%;
       max-width: 100%;
     }
+
     .details-btn {
       .btn {
         margin-top: 0.5rem;
