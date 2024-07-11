@@ -1,0 +1,53 @@
+{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ if .section.id }}
+  {{ $sectionID = .section.id }}
+{{ end }}
+
+<div class="container-fluid anchor pb-5 news news-section"">
+  {{ if not (.section.hideTitle) }}
+    <h1 class="text-center">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+  {{ else }}
+    <h1 class="text-center" style="display: none">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+  {{ end }}
+
+  <div class="container ml-auto text-center">
+      {{ if .news_posts }}
+          {{ $posts := .news_posts }}
+          {{ if .max_posts }}
+              {{ $posts = first .max_posts $posts }}
+          {{ end }}
+          {{ range $posts }}
+              <div class="row justify-content-center">
+                  <div class="col-xl-2 col-l-2 col-md-2 col-s-2 col-xs-1 news-date">
+                      <p>{{ .date }}</p>
+                  </div>
+                  <div class="col-xl-8 col-l-6 col-md-6 col-s-6 col-xs-4 text-left news-content">
+                      <p>
+                      {{ if eq .type "announcement" }}
+                        {{ ":loudspeaker: " | emojify }}
+                      {{ else if eq .type "paper" }}
+                        {{ ":page_with_curl: " | emojify }}
+                      {{ else if eq .type "blog" }}
+                        {{ ":memo: " | emojify }}
+                      {{ else if eq .type "tech" }}
+                        {{ ":robot: " | emojify }}
+                      {{ else if eq .type "funding" }}
+                        {{ ":money_with_wings: " | emojify }}
+                      {{ else if eq .type "event" }}
+                        {{ ":date: " | emojify }}
+                      {{ end }}
+                      {{ .content | markdownify | emojify }}
+                      </p>
+                      {{ if .tweet }}
+                          {{ partial "cards/tweet.html" .tweet }}
+                      {{ end }}
+                  </div>
+              </div>
+          {{ end }}
+      {{ else }}
+          <p>No news so far...</p>
+      {{ end }}
+  </div>
+</div>

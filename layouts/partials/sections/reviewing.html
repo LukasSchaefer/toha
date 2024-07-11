@@ -1,0 +1,42 @@
+{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ if .section.id }}
+{{ $sectionID = .section.id }}
+{{ end }}
+
+<div class="container-fluid anchor pb-5 reviewing-section"">
+    {{ if not (.section.hideTitle) }}
+      <h1 class="text-center">
+          <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    {{ else }}
+      <h1 class="text-center" style="display: none">
+          <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    {{ end }}
+
+    <div class="container text-justify">
+        <table class="reviewing-info-table">
+            <tbody>
+                {{ range .revs}}
+                <tr>
+                    <td class="details">
+                        <div class="review-info card">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-8">
+                                    {{ if .url }}
+                                        <h5><a href="{{ .url }}" title="{{ .title }}" target="_blank" rel="noopener">{{ .title }}</a></h5>
+                                    {{ else }}
+                                        <h5>{{ .title }}</h5>
+                                    {{ end }}
+                                </div>
+                                <div class="category col-lg-2 col-md-4">{{ .category }}</div>
+                                {{ if .conference }}
+                                    <h6 class="conference">{{ .conference | markdownify }}</h6>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>
