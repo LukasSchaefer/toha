@@ -15,7 +15,7 @@
     <div class="container text-justify">
         <table class="reviewing-info-table">
             <tbody>
-                {{ range .revs}}
+                {{ range .categories}}
                 <tr>
                     <td class="details">
                         <div class="review-info card">
@@ -27,9 +27,10 @@
                                         <h5>{{ .title }}</h5>
                                     {{ end }}
                                 </div>
-                                <div class="category col-lg-2 col-md-4">{{ .category }}</div>
-                                {{ if .conference }}
-                                    <h6 class="conference">{{ .conference | markdownify }}</h6>
+                                {{ if .entries }}
+                                    {{ range .entries }}
+                                        <h6>"{{ .year }}: {{ .content | markdownify }}"</h6>
+                                    {{ end }}
                                 {{ end }}
                             </div>
                         </div>
