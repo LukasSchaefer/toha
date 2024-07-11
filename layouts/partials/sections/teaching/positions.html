@@ -1,30 +1,31 @@
 <div class="col-10 col-lg-8">
-    <div class="teaching-entry-heading">
+    <div class="entry-heading">
         {{ $logoImage:= resources.Get .logo}}
         {{ $darkLogoImage:= resources.Get .darkLogo}}
         {{ if $logoImage }}
-        <div class="logo-holder"> 
+        <div class="logo-holder">
             <img class="company-logo light-logo" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
             {{ if $darkLogoImage }}
-                <img class="company-logo dark-logo" src="{{ $darkLogoImage.RelPermalink }}" alt="{{ .name }}" />
+            <img class="company-logo dark-logo" src="{{ $darkLogoImage.RelPermalink }}" alt="{{ .name }}" />
             {{ end }}
         </div>
         {{ end }}
 
         <div class="company-heading">
-            <h5>{{ if .url }}<a href={{.url}} title="{{ .name }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</h5>
+            <h5>{{ if .url }}<a href={{.url}} title="{{ .name }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else
+                }}{{ .name }}{{ end }}</h5>
             <p class="text-muted">
                 {{ .start }} - {{ if .end }}{{ .end }}{{ else }}{{ i18n "present" }}{{ end }},
                 {{ .where }}
             </p>
         </div>
     </div>
-    <p class="teaching-summary"><b>{{ .header | markdownify }}</b></p>
+    <p class="summary"><b>{{ .header | markdownify }}</b></p>
     {{ if .responsibilities }}
-        <ul class="justify-content-around">
-            {{ range .responsibilities }}
-                <li>{{ . | markdownify }}</li>
-            {{ end }}
-        </ul>
+    <ul class="justify-content-around">
+        {{ range .responsibilities }}
+        <li>{{ . | markdownify }}</li>
+        {{ end }}
+    </ul>
     {{ end }}
 </div>

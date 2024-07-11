@@ -1,6 +1,6 @@
 {{ $sectionID := replace (lower .section.name) " " "-"  }}
 {{ if .section.id }}
-{{ $sectionID = .section.id }}
+    {{ $sectionID = .section.id }}
 {{ end }}
 
 <div class="container-fluid anchor pb-5 reviewing-section"">
