@@ -1,113 +1,76 @@
-.reviewing-section .reviewing-info-table {
-  width: 100%;
-  border: none;
-}
+.reviewing-section {
+  @include section-title-adjustment();
 
-.reviewing-section .reviewing-info-table tr:hover {
-  background: none;
-}
+  .card {
+    background: get-light-color('bg-card');
+    border-top: 2px solid get-light-color('accent-color');
 
-.reviewing-section .reviewing-info-table tr,
-.reviewing-section .reviewing-info-table th,
-.reviewing-section .reviewing-info-table td {
-  border: none;
-  padding: 0;
-}
+    &:hover,
+    &:focus {
+      border-top: 2px solid get-light-color('accent-color');
+    }
 
-.reviewing-section .category {
-  color: #8392a5;
-  text-align: right;
-}
+    .card-header {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+    }
 
-.reviewing-section .reviewing-info-table tr:first-child .hline {
-  height: 60%;
-  top: auto;
-}
+    .card-body {
+      padding: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 
-.reviewing-section .reviewing-info-table tr:last-child .hline {
-  height: 50%;
-}
+  .reviewing-list {
+    padding: 1rem !important;
+  }
 
-.reviewing-section .review-info {
-  padding: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-left: 2px solid #248aaa;
-  border-top: 1px solid #c0ccda;
-  border-bottom: 1px solid #c0ccda;
-  border-right: 1px solid #c0ccda;
-  border-radius: 5px;
-}
-
-.reviewing-section .review-info h5 {
-  margin-bottom: 0.3rem;
-}
-
-.reviewing-section .conference {
-  margin-left: 1rem;
-}
-
-/* ============= Device specific fixes ======= */
-
-/* Large screens such as TV */
-
-@media only screen and (min-width: 1824px) {}
-
-/* Extra large devices (large desktops, 1200px and up) */
-
-@media (max-width: 1400px) {}
-
-@media (max-width: 1200px) {}
-
-/* IPad Pro */
-
-@media (max-width: 1024px) {
-  .reviewing-section .container {
+  @include media('<=large') {
     padding-left: 0;
-  }
-}
-
-/*  Large devices (desktops, 992px and up) */
-
-@media (max-width: 992px) {}
-
-/* Medium devices (tablets, 768px and up) */
-
-@media only screen and (max-width: 768px) {}
-
-/* Small devices (landscape phones, 576px and up) */
-
-@media only screen and (max-width: 576px) {
-  .reviewing-section {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .reviewing-section .container {
     padding-right: 0;
+    width: 100%;
+
+    .container {
+      max-width: 100%;
+    }
+
+    .reviewing-list {
+      padding: 0;
+    }
+
+    .reviewing-item {
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+    }
   }
 
-  .reviewing-section .icon {
-    display: none;
+  @include media('<=medium') {
+    .reviewing-item {
+      flex: 100%;
+    }
   }
 
-  .reviewing-section .line {
-    display: none;
-  }
-
-  .reviewing-section .category {
-    text-align: left;
+  @include media('<=small') {
+    .reviewing-item {
+      flex: 100%;
+      max-width: 100%;
+    }
   }
 }
 
-/* iPhoneX, iPhone 6,7,8 */
+html[data-theme='dark'] {
+  .reviewing-section {
+    .card {
+      background: get-dark-color('bg-card');
+      border-top: 2px solid get-dark-color('accent-color');
 
-@media only screen and (max-width: 375px) {}
-
-/* Galaxy S5, Moto G4 */
-
-@media only screen and (max-width: 360px) {}
-
-/* iPhone 5 or before */
-
-@media only screen and (max-width: 320px) {}
+      &:hover,
+      &:focus {
+        border-top: 2px solid get-dark-color('accent-color');
+      }
+    }
+  }
+}

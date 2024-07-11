@@ -1,43 +1,39 @@
-{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ $sectionID := replace (lower .section.name) " " "-" }}
 {{ if .section.id }}
-    {{ $sectionID = .section.id }}
+{{ $sectionID = .section.id }}
 {{ end }}
 
 <div class="container-fluid anchor pb-5 reviewing-section">
     {{ if not (.section.hideTitle) }}
-      <h1 class="text-center">
-          <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    <h1 class="text-center">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}
+    </h1>
     {{ else }}
-      <h1 class="text-center" style="display: none">
-          <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    <h1 class="text-center" style="display: none">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}
+    </h1>
     {{ end }}
 
-    <div class="container text-justify">
-        <table class="reviewing-info-table">
-            <tbody>
-                {{ range .categories}}
-                <tr>
-                    <td class="details">
-                        <div class="review-info card">
-                            <div class="row">
-                                <div class="col-lg-10 col-md-8">
-                                    {{ if .url }}
-                                        <h5><a href="{{ .url }}" title="{{ .title }}" target="_blank" rel="noopener">{{ .title }}</a></h5>
-                                    {{ else }}
-                                        <h5>{{ .title }}</h5>
-                                    {{ end }}
-                                </div>
-                                {{ if .entries }}
-                                    {{ range .entries }}
-                                        <h6>{{ .year }}: {{ .content | markdownify }}</h6>
-                                    {{ end }}
-                                {{ end }}
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                {{ end }}
-            </tbody>
-        </table>
+    <div class="container reviewing-list">
+        <div class="row" id="reviewing-card-holder">
+            {{ range .categories}}
+
+            <div class="col-12 p-2 reviewing-item">
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">{{ .title }}</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ if .entries }}
+                        {{ range .entries }}
+                        <h6>{{ .year }}: {{ .content | markdownify }}</h6>
+                        {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+
+            {{ end }}
+        </div>
     </div>
 </div>
