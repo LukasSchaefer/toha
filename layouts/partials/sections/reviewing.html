@@ -3,7 +3,7 @@
     {{ $sectionID = .section.id }}
 {{ end }}
 
-<div class="container-fluid anchor pb-5 reviewing-section"">
+<div class="container-fluid anchor pb-5 reviewing-section">
     {{ if not (.section.hideTitle) }}
       <h1 class="text-center">
           <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
@@ -29,7 +29,7 @@
                                 </div>
                                 {{ if .entries }}
                                     {{ range .entries }}
-                                        <h6>"{{ .year }}: {{ .content | markdownify }}"</h6>
+                                        <h6>{{ .year }}: {{ .content | markdownify }}</h6>
                                     {{ end }}
                                 {{ end }}
                             </div>
