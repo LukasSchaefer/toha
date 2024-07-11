@@ -44,7 +44,7 @@
   img {
     width: 148px;
     height: 148px;
-    background-color: get-light-color('bg-secondary');
+    background-color: get-light-color('text-color');
     padding: 5px;
     margin-bottom: 10px;
   }
@@ -114,23 +114,23 @@
 
 html[data-theme='dark'] {
   .home {
-    color: get-dark-color('text-color');
+    color: get-dark-color('inverse-text-color');
 
     img {
-      background-color: get-dark-color('bg-secondary');
+      background-color: get-dark-color('inverse-text-color');
     }
 
     .greeting,
     .greeting-subtitle {
-      color: get-dark-color('text-color');
+      color: get-dark-color('inverse-text-color');
     }
 
     .typing-carousel {
-      color: get-dark-color('text-color');
+      color: get-dark-color('inverse-text-color');
     }
 
     .arrow {
-      color: get-dark-color('text-color');
+      color: get-dark-color('inverse-text-color');
     }
   }
 }
