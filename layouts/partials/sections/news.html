@@ -35,6 +35,8 @@
                         {{ ":robot: " | emojify }}
                       {{ else if eq .type "funding" }}
                         {{ ":money_with_wings: " | emojify }}
+                      {{ else if eq .type "award" }}
+                        {{ ":trophy: " | emojify }}
                       {{ else if eq .type "event" }}
                         {{ ":date: " | emojify }}
                       {{ end }}
