@@ -31,6 +31,8 @@
                         {{ ":page_with_curl: " | emojify }}
                       {{ else if eq .type "blog" }}
                         {{ ":memo: " | emojify }}
+                      {{ else if eq .type "talk" }}
+                        {{ ":speech_balloon: " | emojify }}
                       {{ else if eq .type "tech" }}
                         {{ ":robot: " | emojify }}
                       {{ else if eq .type "funding" }}
