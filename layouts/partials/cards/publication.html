@@ -25,7 +25,7 @@
         {{if .url}}
           <span class="me-2"><a class="" href="{{.url}}">{{ .name | markdownify }}</a></span>
         {{ else }}
-        <span class="me-2"><a class="">{{ .name | markdownify }}</a></span>
+        <span class="me-2 author-name"><a class="">{{ .name | markdownify }}</a></span>
         {{ end }}
         {{ end }}
       </div>
@@ -36,7 +36,7 @@
     <div class="card-footer">
       <div class="tags">
         {{ range $index,$tag:= .tags }}
-            <span class="btn badge btn-info ms-1 p-2">
+            <span class="btn badge btn-info ms-1 p-1">
               {{ $tag }}
             </span>
         {{ end }}
